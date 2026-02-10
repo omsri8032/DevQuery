@@ -79,7 +79,7 @@ graph TD
 
 ## 🚀 Features
 
-### 💬 Q&A System
+### 💬  Dev Query
 *   **Community Interaction:** Post questions, write answers, and engage in threaded discussions.
 *   **Voting Mechanism:** Upvote or downvote content to bubble up the best solutions.
 *   **Markdown Support:** Robust text editor with syntax highlighting for developer-friendly posts.
@@ -92,7 +92,6 @@ graph TD
 *   **Responsive Design:** Optimized for seamless experience across mobile, tablet, and desktop.
 
 ### 🛠️ Developer Experience
-*   **Global Search:** Instant, URL-syncing search to find relevant topics quickly.
 *   **Secure Auth:** Robust login and session management powered by Appwrite.
 *   **Performance:** Optimized Next.js App Router architecture for fast page loads.
 
