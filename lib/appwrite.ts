@@ -1,3 +1,4 @@
+// Appwrite Client
 import { Client, Account, Databases, Storage, Avatars } from "appwrite";
 import env from "./env";
 
