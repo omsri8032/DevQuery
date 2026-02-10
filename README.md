@@ -1,29 +1,92 @@
-# Dev Query
+<p align="center">
+  <img src="public/icons/question (1).png" alt="Dev Query Logo" width="100" />
+</p>
 
-**Dev Query** is a modern, full-stack Q&A platform tailored for developers. It enables users to ask questions, share knowledge, and engage with a community through a reputation-based system.
+<h1 align="center">Dev Query - Community Knowledge Platform</h1>
 
-Built with performance and scalability in mind, it leverages **Next.js 14** for the frontend and **Appwrite** as a secure Backend-as-a-Service (BaaS).
+###
+
+<div align="center">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" height="40" alt="NextJS" />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" alt="React" />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="40" alt="TypeScript" />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" height="40" alt="Tailwind" />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/appwrite/appwrite-original.svg" height="40" alt="Appwrite" />
+</div>
+
+###
+
+**Dev Query** is a modern, full-stack Q&A platform tailored for developers. It enables users to ask questions, share knowledge, and engage with a community through a reputation-based system. Built with performance and scalability in mind, it leverages **Next.js** for the frontend and **Appwrite** as a secure Backend-as-a-Service (BaaS).
 
 ---
 
-## 🛠️ Tech Stack
+## ✨ Features
 
-**Core Framework**
-*   ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white) **Next.js 16** (App Router)
-*   ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) **React 19**
-*   ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) **TypeScript**
+- 💬 **Q&A System**: Post questions, write answers, and engage in threaded discussions.
+- 🗳️ **Voting Mechanism**: Upvote or downvote content to bubble up the best solutions.
+- 📝 **Markdown Support**: Robust text editor with syntax highlighting for developer-friendly posts.
+- 🏷️ **Tagging System**: Categorize questions for easy discovery and filtering.
+- 🎨 **Modern Interface**: Glassmorphism design with premium animated backgrounds and dark mode support.
+- 🔍 **Global Search**: Instant, URL-syncing search to find relevant topics quickly.
+- 🔐 **Secure Auth**: Robust login and session management powered by Appwrite.
+- 📱 **Responsive Design**: Optimized for seamless experience across mobile, tablet, and desktop.
 
-**Styling & UI**
-*   ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) **Tailwind CSS**
+---
 
-*   **Radix UI** (Accessible primitives)
+## �️ Screenshots
 
-**Backend & State**
-*   ![Appwrite](https://img.shields.io/badge/Appwrite-%23FD366E.svg?style=for-the-badge&logo=appwrite&logoColor=white) **Appwrite** (Auth, Database, Storage)
-*   **Zustand** (Global State Management)
+### Dashboard & Feed
+| | |
+|:---:|:---:|
+| ![Feed](public/ss/ss-01.png) | ![Dark Mode](public/ss/ss-02.png) |
+| ![Sidebar](public/ss/ss-05.png) | ![Right Sidebar](public/ss/ss-06.png) |
 
-**Editor**
-*   **@uiw/react-md-editor** (Markdown support)
+### Question & Answers
+| | |
+|:---:|:---:|
+| ![Question Detail](public/ss/ss-03.png) | ![Comments](public/ss/ss-07.png) |
+| ![Voting](public/ss/ss-08.png) | ![Rich Text Editor](public/ss/ss-12.png) |
+
+### User Profile & Settings
+| | |
+|:---:|:---:|
+| ![Profile](public/ss/ss-04.png) | ![Edit Profile](public/ss/ss-09.png) |
+| ![Settings](public/ss/ss-10.png) | ![Collection](public/ss/ss-11.png) |
+
+### Authentication & Mobile
+| | |
+|:---:|:---:|
+| ![Login/Register](public/ss/ss-13.png) | ![Mobile Menu](public/ss/ss-14.png) |
+
+---
+
+## �️ Tech Stack
+
+**Frontend:**
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS
+- Untitled UI (Design System)
+
+**Backend:**
+- Appwrite (Auth, Database, Storage)
+
+**State Management:**
+- Zustand
+
+---
+
+## 🧑‍💻 Target Users
+
+- 💻 **Developers**: From beginners to experts looking to solve bugs and share knowledge.
+- 🎓 **Students**: Learning to code and needing help with assignments or concepts.
+- 🤝 **Open Source Contributors**: discussin implementation details and best practices.
+- 🌐 **Tech Enthusiasts**: Keeping up with the latest trends and technologies.
 
 ---
 
@@ -32,22 +95,22 @@ Built with performance and scalability in mind, it leverages **Next.js 14** for 
 ```mermaid
 graph TD
     User["User (Browser)"]
-    
+
     subgraph Frontend["Next.js Application"]
         UI["UI Components (Tailwind)"]
         Pages["Pages (App Router)"]
         Store["State (Zustand)"]
-        
+
         User -->|Interacts| UI
         UI -->|Composes| Pages
         Pages -->|Updates/Reads| Store
     end
-    
+
     subgraph Backend["Appwrite Cloud"]
         Auth["Authentication"]
         DB["Database (Questions/Votes)"]
         Storage["Storage (Images)"]
-        
+
         Store -->|Session| Auth
         Pages -->|CRUD| DB
         UI -->|Load Assets| Storage
@@ -59,40 +122,6 @@ graph TD
         DB -.->|Content| Pages
     end
 ```
-
----
-
-## 📸 Screenshots
-
-| | |
-|:---:|:---:|
-| ![Feed](public/ss/ss-01.png) | ![Dark Mode](public/ss/ss-02.png) |
-| ![Sidebar](public/ss/ss-05.png) | ![Right Sidebar](public/ss/ss-06.png) |
-| ![Question Detail](public/ss/ss-03.png) | ![Comments](public/ss/ss-07.png) |
-| ![Voting](public/ss/ss-08.png) | ![Rich Text Editor](public/ss/ss-12.png) |
-| ![Profile](public/ss/ss-04.png) | ![Edit Profile](public/ss/ss-09.png) |
-| ![Settings](public/ss/ss-10.png) | ![Collection](public/ss/ss-11.png) |
-| ![Login/Register](public/ss/ss-13.png) | ![Mobile Menu](public/ss/ss-14.png) |
-
----
-
-## 🚀 Features
-
-### 💬  Dev Query
-*   **Community Interaction:** Post questions, write answers, and engage in threaded discussions.
-*   **Voting Mechanism:** Upvote or downvote content to bubble up the best solutions.
-*   **Markdown Support:** Robust text editor with syntax highlighting for developer-friendly posts.
-*   **Tagging System:** Categorize questions for easy discovery and filtering.
-
-### 🎨 Modern Interface
-
-*   **Glassmorphism:** Modern aesthetic with translucent elements and subtle gradients.
-*   **Dark Mode First:** Designed natively for dark mode with a clean light mode alternative.
-*   **Responsive Design:** Optimized for seamless experience across mobile, tablet, and desktop.
-
-### 🛠️ Developer Experience
-*   **Secure Auth:** Robust login and session management powered by Appwrite.
-*   **Performance:** Optimized Next.js App Router architecture for fast page loads.
 
 ---
 
