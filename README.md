@@ -15,8 +15,7 @@ Built with performance and scalability in mind, it leverages **Next.js 14** for 
 
 **Styling & UI**
 *   ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) **Tailwind CSS**
-*   **Aceternity UI** (Animated components like Background Beams, Spotlight)
-*   **Lucide React** (Icons)
+
 *   **Radix UI** (Accessible primitives)
 
 **Backend & State**
@@ -35,7 +34,7 @@ graph TD
     User["User (Browser)"]
     
     subgraph Frontend["Next.js Application"]
-        UI["UI Components (Tailwind/Aceternity)"]
+        UI["UI Components (Tailwind)"]
         Pages["Pages (App Router)"]
         Store["State (Zustand)"]
         
@@ -86,7 +85,7 @@ graph TD
 *   **Tagging System:** Categorize questions for easy discovery and filtering.
 
 ### 🎨 Modern Interface
-*   **Aceternity UI:** Premium animated backgrounds (Beams, Spotlight) for a unique visual identity.
+
 *   **Glassmorphism:** Modern aesthetic with translucent elements and subtle gradients.
 *   **Dark Mode First:** Designed natively for dark mode with a clean light mode alternative.
 *   **Responsive Design:** Optimized for seamless experience across mobile, tablet, and desktop.
