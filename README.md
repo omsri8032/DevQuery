@@ -77,14 +77,24 @@ graph TD
 
 ---
 
-## ✨ Key Features
+## 🚀 Features
 
-1.  **Authentication**: Secure Email/Password login flows via Appwrite.
-2.  **Real-time Q&A**: Post questions and answers instantly.
-3.  **Rich Text Editing**: Full Markdown support for code snippets and formatting.
-4.  **Reputation System**: Upvote/Downvote to surface the best community content.
-5.  **Smart Search**: URL-based search filtering for easy sharing.
-6.  **Modern Design**: Dark mode support, animated backgrounds, and responsive layouts.
+### 💬 Q&A System
+*   **Community Interaction:** Post questions, write answers, and engage in threaded discussions.
+*   **Voting Mechanism:** Upvote or downvote content to bubble up the best solutions.
+*   **Markdown Support:** Robust text editor with syntax highlighting for developer-friendly posts.
+*   **Tagging System:** Categorize questions for easy discovery and filtering.
+
+### 🎨 Modern Interface
+*   **Aceternity UI:** Premium animated backgrounds (Beams, Spotlight) for a unique visual identity.
+*   **Glassmorphism:** Modern aesthetic with translucent elements and subtle gradients.
+*   **Dark Mode First:** Designed natively for dark mode with a clean light mode alternative.
+*   **Responsive Design:** Optimized for seamless experience across mobile, tablet, and desktop.
+
+### 🛠️ Developer Experience
+*   **Global Search:** Instant, URL-syncing search to find relevant topics quickly.
+*   **Secure Auth:** Robust login and session management powered by Appwrite.
+*   **Performance:** Optimized Next.js App Router architecture for fast page loads.
 
 ---
 
