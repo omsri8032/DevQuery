@@ -6,6 +6,7 @@ import { databases } from "@/lib/appwrite";
 import env from "@/lib/env";
 import { Query } from "appwrite";
 import { Question } from "@/models/types";
+import { Badge } from "@/components/base/badge/badge";
 
 export default function TagsPage() {
     const [tags, setTags] = useState<{ name: string; count: number }[]>([]);
@@ -61,8 +62,8 @@ export default function TagsPage() {
 
     return (
         <div className="container py-10 space-y-8">
-            <h1 className="text-3xl font-bold tracking-tight">Tags</h1>
-            <p className="text-muted-foreground">
+            <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">Tags</h1>
+            <p className="text-neutral-500 dark:text-neutral-400">
                 A tag is a keyword or label that categorizes your question with other, similar questions.
             </p>
 
@@ -71,12 +72,12 @@ export default function TagsPage() {
             ) : tags.length > 0 ? (
                 <div className="flex flex-wrap gap-4">
                     {tags.map((tag) => (
-                        <Link key={tag.name} href={`/tags/${tag.name}`}>
-                            <div className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-muted/50 transition-colors min-w-[100px]">
-                                <span className="bg-secondary text-secondary-foreground px-2.5 py-0.5 rounded-full text-sm font-medium mb-2">
+                        <Link key={tag.name} href={`/tags/${tag.name}`} className="group">
+                            <div className="flex flex-col items-center justify-center p-4 border border-neutral-200 dark:border-neutral-800 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors min-w-[120px]">
+                                <Badge color="primary" size="lg" className="mb-2">
                                     {tag.name}
-                                </span>
-                                <span className="text-xs text-muted-foreground">
+                                </Badge>
+                                <span className="text-xs text-neutral-500 dark:text-neutral-400">
                                     {tag.count} question{tag.count !== 1 && "s"}
                                 </span>
                             </div>
@@ -84,9 +85,9 @@ export default function TagsPage() {
                     ))}
                 </div>
             ) : (
-                <div className="text-center py-10 bg-muted/50 rounded-lg">
-                    <h3 className="text-lg font-medium">No tags found</h3>
-                    <p className="text-muted-foreground mt-2">
+                <div className="text-center py-10 bg-neutral-50 dark:bg-neutral-900 rounded-lg">
+                    <h3 className="text-lg font-medium text-neutral-900 dark:text-neutral-50">No tags found</h3>
+                    <p className="text-neutral-500 dark:text-neutral-400 mt-2">
                         Ask a question to create the first tag!
                     </p>
                 </div>

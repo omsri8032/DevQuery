@@ -8,7 +8,7 @@ import env from "@/lib/env";
 import { Query } from "appwrite";
 import { Question } from "@/models/types";
 import QuestionCard from "@/components/QuestionCard";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/base/buttons/button";
 
 export default function TagPage() {
     const { tag } = useParams();
@@ -43,9 +43,9 @@ export default function TagPage() {
     return (
         <div className="container py-10 space-y-6">
             <div className="flex items-center justify-between">
-                <h1 className="text-3xl font-bold tracking-tight">Questions tagged [{decodedTag}]</h1>
+                <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">Questions tagged [{decodedTag}]</h1>
                 <Link href="/questions/ask">
-                    <Button>Ask Question</Button>
+                    <Button color="primary">Ask Question</Button>
                 </Link>
             </div>
 

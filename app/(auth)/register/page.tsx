@@ -6,9 +6,8 @@ import { useRouter } from "next/navigation";
 import { account } from "@/lib/appwrite";
 import { useAuthStore } from "@/store/useAuthStore";
 import { ID } from "appwrite";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from "@/components/base/buttons/button";
+import { Input } from "@/components/base/input/input";
 
 export default function RegisterPage() {
     const [isLoading, setIsLoading] = useState(false);
@@ -32,15 +31,21 @@ export default function RegisterPage() {
             return;
         }
 
+        if (password.length < 8) {
+            setError("Password must be at least 8 characters long");
+            setIsLoading(false);
+            return;
+        }
+
         try {
             // 1. Create Account
             await account.create(ID.unique(), email, password, name);
 
-            // 1b. Delete current session if exists to avoid 401
+            // 1b. Delete current session if exists
             try {
                 await account.deleteSession("current");
             } catch (e) {
-                // Ignore errors here. If 401, it means we are already logged out.
+                // Ignore errors here.
             }
 
             // 2. Create Session (Login)
@@ -63,79 +68,61 @@ export default function RegisterPage() {
     return (
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             <div className="flex flex-col space-y-2 text-center">
-                <h1 className="text-2xl font-semibold tracking-tight">
+                <h1 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">
                     Create an account
                 </h1>
-                <p className="text-sm text-muted-foreground">
-                    Enter your details below to create your account
-                </p>
             </div>
 
             <div className="grid gap-6">
                 <form onSubmit={handleSubmit}>
-                    <div className="grid gap-2">
-                        <div className="grid gap-1">
-                            <Label className="sr-only" htmlFor="name">
-                                Name
-                            </Label>
-                            <Input
-                                id="name"
-                                name="name"
-                                placeholder="Name"
-                                type="text"
-                                autoCapitalize="none"
-                                autoCorrect="off"
-                                disabled={isLoading}
-                            />
-                        </div>
-                        <div className="grid gap-1">
-                            <Label className="sr-only" htmlFor="email">
-                                Email
-                            </Label>
-                            <Input
-                                id="email"
-                                name="email"
-                                placeholder="name@example.com"
-                                type="email"
-                                autoCapitalize="none"
-                                autoComplete="email"
-                                autoCorrect="off"
-                                disabled={isLoading}
-                            />
-                        </div>
-                        <div className="grid gap-1">
-                            <Label className="sr-only" htmlFor="password">
-                                Password
-                            </Label>
-                            <Input
-                                id="password"
-                                name="password"
-                                placeholder="Password"
-                                type="password"
-                                autoComplete="new-password"
-                                disabled={isLoading}
-                            />
-                        </div>
+                    <div className="grid gap-4">
+                        <Input
+                            label="Name"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            type="text"
+                            disabled={isLoading}
+                            isRequired
+                        />
+                        <Input
+                            label="Email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            type="email"
+                            autoComplete="email"
+                            disabled={isLoading}
+                            isRequired
+                        />
+                        <Input
+                            label="Password"
+                            id="password"
+                            name="password"
+                            placeholder="Create a password"
+                            type="password"
+                            hint="Must be at least 8 characters."
+                            autoComplete="new-password"
+                            disabled={isLoading}
+                            isRequired
+                        />
                         {error && (
-                            <p className="text-sm text-red-500 text-center">{error}</p>
+                            <p className="text-sm text-destructive text-center">{error}</p>
                         )}
-                        <Button disabled={isLoading}>
-                            {isLoading && (
-                                <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                            )}
-                            Sign Up with Email
+                        <Button type="submit" disabled={isLoading} fullWidth color="primary" isLoading={isLoading}>
+                            Get started
                         </Button>
                     </div>
                 </form>
             </div>
 
-            <p className="px-8 text-center text-sm text-muted-foreground">
+            <p className="px-8 text-center text-sm text-neutral-500 dark:text-neutral-400">
                 Already have an account?{" "}
                 <Link
                     href="/login"
-                    className="underline underline-offset-4 hover:text-primary"
+                    className="font-medium text-primary hover:text-primary/90 hover:underline"
                 >
-                    Login
+                    Log in
                 </Link>
             </p>
         </div>

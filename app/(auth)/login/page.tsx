@@ -5,9 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { account } from "@/lib/appwrite";
 import { useAuthStore } from "@/store/useAuthStore";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from "@/components/base/buttons/button";
+import { Input } from "@/components/base/input/input";
 
 export default function LoginPage() {
     const [isLoading, setIsLoading] = useState(false);
@@ -30,12 +29,18 @@ export default function LoginPage() {
             return;
         }
 
+        if (password.length < 8) {
+            setError("Password must be at least 8 characters long");
+            setIsLoading(false);
+            return;
+        }
+
         try {
             // 1. Delete current session if exists
             try {
                 await account.deleteSession("current");
             } catch (e) {
-                // Ignore errors here. If 401, it means we are already logged out, which is what we want.
+                // Ignore errors here.
             }
 
             // 2. Create Session
@@ -57,63 +62,56 @@ export default function LoginPage() {
 
     return (
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+            {/* Logo or Header could go here */}
             <div className="flex flex-col space-y-2 text-center">
-                <h1 className="text-2xl font-semibold tracking-tight">Welcome back</h1>
-                <p className="text-sm text-muted-foreground">
-                    Enter your email to sign in to your account
+                <h1 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">Log in to your account</h1>
+                <p className="text-sm text-neutral-500 dark:text-neutral-400">
+                    Welcome back! Please enter your details.
                 </p>
             </div>
 
             <div className="grid gap-6">
                 <form onSubmit={handleSubmit}>
-                    <div className="grid gap-2">
-                        <div className="grid gap-1">
-                            <Label className="sr-only" htmlFor="email">
-                                Email
-                            </Label>
-                            <Input
-                                id="email"
-                                name="email"
-                                placeholder="name@example.com"
-                                type="email"
-                                autoCapitalize="none"
-                                autoComplete="email"
-                                autoCorrect="off"
-                                disabled={isLoading}
-                            />
-                        </div>
-                        <div className="grid gap-1">
-                            <Label className="sr-only" htmlFor="password">
-                                Password
-                            </Label>
-                            <Input
-                                id="password"
-                                name="password"
-                                placeholder="Password"
-                                type="password"
-                                autoComplete="current-password"
-                                disabled={isLoading}
-                            />
-                        </div>
+                    <div className="grid gap-4">
+                        <Input
+                            label="Email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            type="email"
+                            autoComplete="email"
+                            disabled={isLoading}
+                            isRequired
+                        />
+                        <Input
+                            label="Password"
+                            id="password"
+                            name="password"
+                            placeholder="••••••••"
+                            type="password"
+                            autoComplete="current-password"
+                            disabled={isLoading}
+                            isRequired
+                        />
+
                         {error && (
-                            <p className="text-sm text-red-500 text-center">{error}</p>
+                            <p className="text-sm text-destructive text-center">{error}</p>
                         )}
-                        <Button disabled={isLoading}>
-                            {isLoading && (
-                                <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                            )}
-                            Sign In with Email
+
+                        <Button type="submit" disabled={isLoading} fullWidth color="primary" isLoading={isLoading}>
+                            Sign in
                         </Button>
                     </div>
                 </form>
             </div>
 
-            <p className="px-8 text-center text-sm text-muted-foreground">
+            <p className="px-8 text-center text-sm text-neutral-500 dark:text-neutral-400">
+                Don&apos;t have an account?{" "}
                 <Link
                     href="/register"
-                    className="hover:text-brand underline underline-offset-4"
+                    className="font-medium text-primary hover:text-primary/90 hover:underline"
                 >
-                    Don&apos;t have an account? Sign Up
+                    Sign up
                 </Link>
             </p>
         </div>

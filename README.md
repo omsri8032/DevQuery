@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dev Query
 
-## Getting Started
+**Dev Query** is a modern, full-stack Q&A platform tailored for developers. It enables users to ask questions, share knowledge, and engage with a community through a reputation-based system.
 
-First, run the development server:
+Built with performance and scalability in mind, it leverages **Next.js 14** for the frontend and **Appwrite** as a secure Backend-as-a-Service (BaaS).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🛠️ Tech Stack
+
+**Core Framework**
+*   ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white) **Next.js 16** (App Router)
+*   ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) **React 19**
+*   ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) **TypeScript**
+
+**Styling & UI**
+*   ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) **Tailwind CSS**
+*   **Aceternity UI** (Animated components like Background Beams, Spotlight)
+*   **Lucide React** (Icons)
+*   **Radix UI** (Accessible primitives)
+
+**Backend & State**
+*   ![Appwrite](https://img.shields.io/badge/Appwrite-%23FD366E.svg?style=for-the-badge&logo=appwrite&logoColor=white) **Appwrite** (Auth, Database, Storage)
+*   **Zustand** (Global State Management)
+
+**Editor**
+*   **@uiw/react-md-editor** (Markdown support)
+
+---
+
+## 🏗️ Architecture
+
+```mermaid
+graph TD
+    User["User (Browser)"]
+    
+    subgraph Frontend["Next.js Application"]
+        UI["UI Components (Tailwind/Aceternity)"]
+        Pages["Pages (App Router)"]
+        Store["State (Zustand)"]
+        
+        User -->|Interacts| UI
+        UI -->|Composes| Pages
+        Pages -->|Updates/Reads| Store
+    end
+    
+    subgraph Backend["Appwrite Cloud"]
+        Auth["Authentication"]
+        DB["Database (Questions/Votes)"]
+        Storage["Storage (Images)"]
+        
+        Store -->|Session| Auth
+        Pages -->|CRUD| DB
+        UI -->|Load Assets| Storage
+    end
+
+    subgraph DataFlow["Data Flow"]
+        direction TB
+        Auth -.->|Profile| User
+        DB -.->|Content| Pages
+    end
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📸 Screenshots
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Dashboard | Question Details |
+|:---:|:---:|
+| ![Dashboard](public/ss/ss-01.png) | ![Question](public/ss/ss-02.png) |
 
-## Learn More
+| Rich Text Editor | Profile / User Menu |
+|:---:|:---:|
+| ![RTE](public/ss/ss-03.png) | ![Profile](public/ss/ss-04.png) |
 
-To learn more about Next.js, take a look at the following resources:
+> *Check the `public/ss` folder for more screenshots.*
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ✨ Key Features
 
-## Deploy on Vercel
+1.  **Authentication**: Secure Email/Password login flows via Appwrite.
+2.  **Real-time Q&A**: Post questions and answers instantly.
+3.  **Rich Text Editing**: Full Markdown support for code snippets and formatting.
+4.  **Reputation System**: Upvote/Downvote to surface the best community content.
+5.  **Smart Search**: URL-based search filtering for easy sharing.
+6.  **Modern Design**: Dark mode support, animated backgrounds, and responsive layouts.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Getting Started
+
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/yourusername/qna-system.git
+    cd qna-system
+    ```
+
+2.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Environment Setup**
+    Create a `.env.local` file with your Appwrite credentials:
+    ```env
+    NEXT_PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+    NEXT_PUBLIC_APPWRITE_PROJECT_ID=your_project_id
+    NEXT_PUBLIC_APPWRITE_DATABASE_ID=your_database_id
+    ```
+
+4.  **Run Development Server**
+    ```bash
+    npm run dev
+    ```
+
+Open [http://localhost:3000](http://localhost:3000) to see the app.
