@@ -65,27 +65,14 @@ graph TD
 
 ## 📸 Screenshots
 
-### Dashboard & Feed
 | | |
 |:---:|:---:|
 | ![Feed](public/ss/ss-01.png) | ![Dark Mode](public/ss/ss-02.png) |
 | ![Sidebar](public/ss/ss-05.png) | ![Right Sidebar](public/ss/ss-06.png) |
-
-### Question & Answers
-| | |
-|:---:|:---:|
 | ![Question Detail](public/ss/ss-03.png) | ![Comments](public/ss/ss-07.png) |
 | ![Voting](public/ss/ss-08.png) | ![Rich Text Editor](public/ss/ss-12.png) |
-
-### User Profile & Settings
-| | |
-|:---:|:---:|
 | ![Profile](public/ss/ss-04.png) | ![Edit Profile](public/ss/ss-09.png) |
 | ![Settings](public/ss/ss-10.png) | ![Collection](public/ss/ss-11.png) |
-
-### Authentication & Mobile
-| | |
-|:---:|:---:|
 | ![Login/Register](public/ss/ss-13.png) | ![Mobile Menu](public/ss/ss-14.png) |
 
 ---
